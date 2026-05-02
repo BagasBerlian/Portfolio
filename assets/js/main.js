@@ -60,10 +60,10 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
     },
     breakpoints: {
         576: {
-            slidePerView: 2,
+            slidesPerView: 2,
         },
         768: {
-            slidePerView: 2,
+            slidesPerView: 2,
             spaceBetween: 48,
         },
     }
