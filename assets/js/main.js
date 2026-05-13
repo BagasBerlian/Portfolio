@@ -6,6 +6,16 @@ function scrollHeader() {
 }
 window.addEventListener('scroll', scrollHeader)
 
+/*=============== TYPED JS ===============*/
+const typedHome = new Typed("#home-typed", {
+  strings: ["Web Developer", "Web/Mobile Designer", "Freelance", "Fullstack Developer", "Data Analyst", "Project Manager"],
+  typeSpeed: 80,
+  backSpeed: 40,
+  backDelay: 2000,
+  loop: true,
+  cursorChar: "_",
+});
+
 /*=============== SERVICES MODAL ===============*/
 const modalViews = document.querySelectorAll(".services__modal"),
   modalBtn = document.querySelectorAll(".services__button"),
@@ -113,9 +123,19 @@ themeButton.addEventListener('click', () => {
     document.body.classList.toggle(lightTheme);
     themeButton.classList.toggle(iconTheme);
 
-    localStorage.setItem("selected-theme", getCurrentTheme);
-    localStorage.setItem("selected-icon", getCurrentIcon);
+    localStorage.setItem("selected-theme", getCurrentTheme());
+    localStorage.setItem("selected-icon", getCurrentIcon());
 })
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 2500,
+    delay: 400,
+    // reset: true
+})
 
+sr.reveal(`.home__data`)
+sr.reveal(`.home__handle`, {delay: 700})
+sr.reveal(`.home__social, .home__scroll`, {delay: 900, origin: 'bottom'})
