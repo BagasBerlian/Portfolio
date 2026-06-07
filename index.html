@@ -1024,26 +1024,51 @@
 
                     <div class="contact__content">
                         <h3 class="contact__title">
-                            Write me your project
+                            Hubungi Saya
                         </h3>
 
-                        <form action="" class="contact__form">
+                        <form action="" class="contact__form" id="contact-form">
                             <div class="contact__form-div">
-                                <label for="" class="contact__form-tag">Name</label>
-                                <input type="text" placeholder="Insert your name" class="contact__form-input">
+                                <label for="contact-name" class="contact__form-tag">Nama</label>
+                                <input type="text" name="name" id="contact-name" placeholder="Masukkan nama Anda" class="contact__form-input" minlength="3" maxlength="100" required>
                             </div>
 
                             <div class="contact__form-div">
-                                <label for="" class="contact__form-tag">Mail</label>
-                                <input type="email" placeholder="Insert your email" class="contact__form-input">
+                                <label for="contact-email" class="contact__form-tag">Email</label>
+                                <input type="email" name="email" id="contact-email" placeholder="Masukkan email Anda" class="contact__form-input" required>
+                            </div>
+
+                            <!-- Honeypot (Anti-spam) -->
+                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+                            <div class="contact__purpose">
+                                <label class="contact__form-tag" style="position: relative; left: 1.25rem; top: -.5rem; background-color: var(--body-color); padding: 0 .25rem; z-index: 10;">Tujuan Kontak</label>
+                                <div class="contact__purpose-options">
+                                    <label class="contact__purpose-label">
+                                        <input type="radio" name="purpose" value="Karier / Pekerjaan" required>
+                                        <span class="contact__purpose-chip">Karier / Pekerjaan</span>
+                                    </label>
+                                    <label class="contact__purpose-label">
+                                        <input type="radio" name="purpose" value="Proyek Baru" required>
+                                        <span class="contact__purpose-chip">Proyek Baru</span>
+                                    </label>
+                                    <label class="contact__purpose-label">
+                                        <input type="radio" name="purpose" value="Kerja Sama / Kolaborasi" required>
+                                        <span class="contact__purpose-chip">Kerja Sama</span>
+                                    </label>
+                                    <label class="contact__purpose-label">
+                                        <input type="radio" name="purpose" value="Lainnya" required>
+                                        <span class="contact__purpose-chip">Lainnya</span>
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="contact__form-div contact__form-area">
-                                <label for="" class="contact__form-tag">Project</label>
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Write your project" class="contact__form-input"></textarea>
+                                <label for="contact-message" class="contact__form-tag">Pesan</label>
+                                <textarea name="message" id="contact-message" cols="30" rows="10" placeholder="Tulis deskripsi detail pekerjaan, proyek, atau kerja sama..." class="contact__form-input" minlength="10" required></textarea>
                             </div>
 
-                            <button class="button">Send Message</button>
+                            <button type="submit" class="button">Kirim Pesan</button>
                         </form>
                     </div>
                 </div>
@@ -1096,6 +1121,15 @@
         <!--=============== MIXITUP FILTER ===============-->
         <script src="assets/js/mixitup.min.js"></script>
         
+        <!--=============== TOAST NOTIFICATION ===============-->
+        <div id="contact-toast" class="contact__toast">
+            <i class="bx bx-check-circle contact__toast-icon"></i>
+            <div class="contact__toast-message">
+                <span class="contact__toast-title">Sukses!</span>
+                <span class="contact__toast-desc">Pesan Anda berhasil dikirim.</span>
+            </div>
+            <i class="bx bx-x contact__toast-close" id="contact-toast-close"></i>
+        </div>
 
         <!--=============== MAIN JS ===============-->
         <script src="assets/js/main.js"></script>
