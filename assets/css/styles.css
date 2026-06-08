@@ -579,7 +579,9 @@ body.light-theme {
 .services__modal {
   position: fixed;
   inset: 0;
-  background-color: hsla(var(--second-hue), 28%, 16%, .7);
+  background-color: hsla(var(--second-hue), 28%, 16%, .85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   padding: 2rem 1rem;
   display: grid;
   place-items: center;
@@ -645,6 +647,11 @@ body.light-theme {
 .active-modal {
   opacity: 1;
   visibility: visible;
+}
+
+/* Disable body scroll when modal is active */
+.disable-scroll {
+  overflow: hidden;
 }
 
 /*=============== WORK ===============*/

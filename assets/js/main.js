@@ -23,6 +23,7 @@ const modalViews = document.querySelectorAll(".services__modal"),
 
 let modal = function (modalClick) {
     modalViews[modalClick].classList.add('active-modal');
+    document.body.classList.add('disable-scroll');
 }
 
 modalBtn.forEach((mb, i) => {
@@ -36,6 +37,7 @@ modalClose.forEach((mc) => {
         modalViews.forEach((mv) => {
             mv.classList.remove("active-modal");
         })
+        document.body.classList.remove('disable-scroll');
     })
 });
 
@@ -131,14 +133,28 @@ themeButton.addEventListener('click', () => {
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration: 2500,
-    delay: 400,
-    // reset: true
+    duration: 2000, // Sedikit dipercepat agar lebih responsif tapi tetap elegan
+    delay: 300,
+    // reset: true // Bisa diubah ke true jika ingin animasi selalu muncul saat di-scroll ulang
 })
 
+// Home Section
 sr.reveal(`.home__data`)
-sr.reveal(`.home__handle`, { delay: 700 })
-sr.reveal(`.home__social, .home__scroll`, { delay: 900, origin: 'bottom' })
+sr.reveal(`.home__handle`, { delay: 600 })
+sr.reveal(`.home__social, .home__scroll`, { delay: 800, origin: 'bottom' })
+
+// Section Title & Subtitle
+sr.reveal(`.section__title, .section__subtitle`, { delay: 200, origin: 'top' })
+
+// About Section
+sr.reveal(`.about__img`, { origin: 'left', delay: 400 })
+sr.reveal(`.about__data`, { origin: 'right', delay: 400 })
+
+// Skills, Services, Work, and Contact Elements (Grid/Cards)
+sr.reveal(`.skills__content, .services__card, .work__card, .contact__content`, { interval: 150, origin: 'bottom' })
+
+// Footer
+sr.reveal(`.footer__container`, { delay: 300, origin: 'bottom' })
 
 /*=============== CONTACT FORM SUBMIT TO GOOGLE SHEETS ===============*/
 const contactForm = document.getElementById('contact-form'),
