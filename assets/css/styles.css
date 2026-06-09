@@ -25,7 +25,8 @@
   --second-hue: 219; */
 
   --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
-  --first-color-alt: hsl(var(--first-hue), var(--sat), 58%); /* -4% */
+  --first-color-alt: hsl(var(--first-hue), var(--sat), 58%);
+  /* -4% */
   --title-color: hsl(var(--second-hue), 15%, 95%);
   --text-color: hsl(var(--second-hue), 8%, 75%);
   --text-color-light: hsl(var(--second-hue), 4%, 55%);
@@ -89,10 +90,13 @@ textarea {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
-  transition: .4s; /* for light mode animation */
+  transition: .4s;
+  /* for light mode animation */
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: var(--title-color);
   font-weight: var(--font-semibold);
 }
@@ -216,7 +220,7 @@ body.light-theme {
   padding: 4.5rem 0 1rem;
 }
 
-.section__title, 
+.section__title,
 .section__subtitle {
   text-align: center;
 }
@@ -241,7 +245,8 @@ body.light-theme {
   width: 100%;
   background-color: var(--body-color);
   z-index: var(--z-fixed);
-  transition: .4s; /* for light mode animation */
+  transition: .4s;
+  /* for light mode animation */
 }
 
 .nav {
@@ -269,7 +274,8 @@ body.light-theme {
   border-radius: 4rem;
   padding: 1rem 2.25rem;
   backdrop-filter: blur(10px);
-  transition: .4s; /* for light mode animation */
+  transition: .4s;
+  /* for light mode animation */
 }
 
 .nav__list {
@@ -289,9 +295,8 @@ body.light-theme {
 /* Active link */
 .active-link {
   background: linear-gradient(180deg,
-    hsla(var(--first-hue), var(--sat), var(--lig), 1),
-    hsla(var(--first-hue), var(--sat), var(--lig), .2)
-  );
+      hsla(var(--first-hue), var(--sat), var(--lig), 1),
+      hsla(var(--first-hue), var(--sat), var(--lig), .2));
   box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), .4);
   color: var(--title-color);
 }
@@ -349,11 +354,9 @@ body.light-theme {
   justify-self: center;
   width: 190px;
   height: 230px;
-  background: linear-gradient(
-    180deg,
-    hsla(var(--first-hue), var(--sat), var(--lig), 1),
-    hsla(var(--first-hue), var(--sat), var(--lig), .2)
-  );
+  background: linear-gradient(180deg,
+      hsla(var(--first-hue), var(--sat), var(--lig), 1),
+      hsla(var(--first-hue), var(--sat), var(--lig), .2));
   border-radius: 10rem 10rem 1rem 1rem;
   display: flex;
   align-items: flex-end;
@@ -452,7 +455,7 @@ body.light-theme {
   text-align: center;
 }
 
-.about__info{
+.about__info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: .5rem;
@@ -622,7 +625,7 @@ body.light-theme {
 .services__modal-item {
   display: flex;
   align-items: flex-start;
-  column-gap: .5rem ;
+  column-gap: .5rem;
 }
 
 .services__modal-icon {
@@ -764,6 +767,25 @@ body.light-theme {
   background-color: var(--first-color);
 }
 
+/*=============== CONTACT ANIMATION ===============*/
+/* Animasi untuk IntersectionObserver — tidak pakai ScrollReveal
+   agar selalu re-trigger meski layout berubah akibat MixitUp filter */
+@keyframes contactSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact--animate {
+  animation: contactSlideUp 0.7s ease forwards;
+}
+
 /*=============== CONTACT ===============*/
 .contact__container {
   row-gap: 3rem;
@@ -896,7 +918,7 @@ body.light-theme {
   transition: 0.3s;
 }
 
-.contact__purpose-label input:checked + .contact__purpose-chip {
+.contact__purpose-label input:checked+.contact__purpose-chip {
   background-color: var(--first-color);
   color: var(--body-color);
   border-color: var(--first-color);
@@ -1143,7 +1165,7 @@ body.light-theme {
   .work__img {
     width: 295px;
   }
-  
+
   .contact__info {
     grid-template-columns: 300px;
     justify-content: center;
@@ -1175,7 +1197,7 @@ body.light-theme {
   }
 
   .section {
-    padding: 6.5rem 0 1rem ;
+    padding: 6.5rem 0 1rem;
   }
 
   .section__title {

@@ -150,11 +150,43 @@ sr.reveal(`.section__title, .section__subtitle`, { delay: 200, origin: 'top' })
 sr.reveal(`.about__img`, { origin: 'left', delay: 400 })
 sr.reveal(`.about__data`, { origin: 'right', delay: 400 })
 
-// Skills, Services, Work, and Contact Elements (Grid/Cards)
-sr.reveal(`.skills__content, .services__card, .work__card, .contact__content`, { interval: 150, origin: 'bottom' })
+// Skills, Services, Work Elements (Grid/Cards)
+sr.reveal(`.skills__content, .services__card, .work__card`, { interval: 150, origin: 'bottom' })
 
-// Footer
-sr.reveal(`.footer__container`, { delay: 300, origin: 'bottom' })
+
+/*=============== CONTACT SECTION — INTERSECTION OBSERVER ===============*/
+// Menggunakan IntersectionObserver karena ScrollReveal meng-cache posisi scroll
+// saat init. Ketika MixitUp mengubah tinggi layout (filter tab), posisi cached
+// ScrollReveal menjadi tidak valid dan animasi contact tidak terpicu lagi.
+// IntersectionObserver selalu real-time dan tidak bergantung posisi yang di-cache.
+const contactItems = document.querySelectorAll('.contact__content');
+
+const contactObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            // Reset dulu sebelum tambah class agar animasi ulang
+            entry.target.classList.remove('contact--animate');
+            // Force reflow agar browser 'lihat' perubahan sebelum re-animate
+            void entry.target.offsetWidth;
+            // Delay staggered antar item
+            const index = Array.from(contactItems).indexOf(entry.target);
+            entry.target.style.animationDelay = (index * 150) + 'ms';
+            entry.target.classList.add('contact--animate');
+        } else {
+            // Hapus class saat keluar viewport agar bisa re-animate saat masuk lagi
+            entry.target.classList.remove('contact--animate');
+        }
+    });
+}, {
+    threshold: 0.15 // Trigger ketika 15% elemen terlihat
+});
+
+contactItems.forEach(item => {
+    // Set initial state via JS (bukan CSS global) agar tidak bentrok dengan SR
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(60px)';
+    contactObserver.observe(item);
+});
 
 /*=============== CONTACT FORM SUBMIT TO GOOGLE SHEETS ===============*/
 const contactForm = document.getElementById('contact-form'),
